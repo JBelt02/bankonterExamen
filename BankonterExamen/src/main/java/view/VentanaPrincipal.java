@@ -339,10 +339,10 @@ public class VentanaPrincipal extends JFrame {
 					this.jcbUsuario.setSelectedIndex(i);
 				}
 			}
-			if (p.getTipocontrato() == TipocontratoControlador.findById(1)) this.radioCuentaBancaria.setSelected(true);
-			if (p.getTipocontrato() == TipocontratoControlador.findById(2)) this.radioTarjetaDebito.setSelected(true);
-			if (p.getTipocontrato() == TipocontratoControlador.findById(3)) this.radioTarjetaCredito.setSelected(true);
-			if (p.getTipocontrato() == TipocontratoControlador.findById(4)) this.radioPrestamo.setSelected(true);
+			if (p.getTipocontrato().getId() == 1) this.radioCuentaBancaria.setSelected(true);
+			if (p.getTipocontrato().getId() == 2) this.radioTarjetaDebito.setSelected(true);
+			if (p.getTipocontrato().getId() == 3) this.radioTarjetaCredito.setSelected(true);
+			if (p.getTipocontrato().getId() == 4) this.radioPrestamo.setSelected(true);
 		
 			
 			// Pongo la fecha
@@ -421,13 +421,17 @@ public class VentanaPrincipal extends JFrame {
 		p.setSaldo(Float.parseFloat(jtfSaldo.getText()));
 		p.setLimite(Float.parseFloat(jtfLimite.getText()));
 		p.setUsuario((Usuario) this.jcbUsuario.getSelectedItem());
-
-//		if (this.radioCuentaBancaria.isSelected()) p.setTipocontrato((Tipocontrato)(p.getDescripcion()));
-//		if (this.radioTarjetaDebito.isSelected()) p.setTipocontrato((Tipocontrato) TipocontratoControlador.findById(p.getId()));
-//		if (this.radioTarjetaCredito.isSelected()) p.setTipocontrato((Tipocontrato) TipocontratoControlador.findById(p.getId()));
-//		if (this.radioPrestamo.isSelected()) p.setTipocontrato((Tipocontrato) TipocontratoControlador.findById(p.getId()));
 		
-		p.setTipocontrato(tipocontrato);
+		
+			if (this.radioCuentaBancaria.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(1));
+			if (this.radioTarjetaDebito.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(2));
+			if (this.radioTarjetaCredito.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(3));
+			if (this.radioPrestamo.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(4));
+	
+//			if (this.radioCuentaBancaria.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(p.getTipocontrato().getId()));;
+//			if (this.radioTarjetaDebito.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(p.getTipocontrato().getId()));
+//			if (this.radioTarjetaCredito.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(p.getTipocontrato().getId())) ;
+//			if (this.radioPrestamo.isSelected()) p.setTipocontrato(TipocontratoControlador.findById(p.getTipocontrato().getId()));
 
 		
 		try {

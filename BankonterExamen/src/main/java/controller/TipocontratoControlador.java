@@ -24,11 +24,12 @@ private static EntityManagerFactory entityManagerFactory = Persistence.createEnt
 		return l;
 	}
 	
-	public static List<Tipocontrato> findById (int id) {
+	public static Tipocontrato findById (int id) {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		Query q = em.createNativeQuery("SELECT * FROM tipocontrato where id like ?", Tipocontrato.class);
 		q.setParameter(1, "%" + id + "%");
-		List<Tipocontrato> l = (List<Tipocontrato>) q.getResultList();
+		Tipocontrato l = new Tipocontrato();
+		l = (Tipocontrato) q.getSingleResult();
 		
 		em.close();
 		return l;
