@@ -176,7 +176,7 @@ public class PanelUsuario extends JPanel {
 		this.jtfEmail.setText(usuario.getEmail());
 		
 		for (int i = 0; i < this.jcbColorPreferido.getItemCount(); i++) {
-			if (this.jcbColorPreferido.getItemAt(i) == usuario.getColorPreferido()) {
+			if (this.jcbColorPreferido.getItemAt(i).equals(this.usuario.getColorPreferido())) {
 				this.jcbColorPreferido.setSelectedIndex(i);
 			}
 		}
@@ -188,7 +188,7 @@ public class PanelUsuario extends JPanel {
 	private void guardar() {
 		try {
 			this.usuario.setNombreUsuario(this.jtfUsuario.getText());
-			this.usuario.setColorPreferido(this.jcbColorPreferido.getSelectedItem().toString());
+			this.usuario.setColorPreferido((String)this.jcbColorPreferido.getSelectedItem());
 			this.usuario.setPassword(this.passContraseña.getText());
 			this.usuario.setEmail(this.jtfEmail.getText());
 			
